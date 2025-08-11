@@ -67,4 +67,4 @@ export default tseslint.config([
   },
 ])
 ```
-echo "이 프로젝트는 백업 테스트 중입니다." >> README.md
+echo "이 프로젝트는 백업 테스트 중입니다람쥐." >> README.md
