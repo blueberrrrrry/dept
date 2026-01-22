@@ -29,12 +29,21 @@ jobs:
           cache: 'npm'
       
       - name: Install dependencies
-        run: npm ci
+        run: |
+          if [ -f "package-lock.json" ]; then
+            npm ci
+          else
+            npm install
+          fi
       
       - name: Build
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
-        run: npm run build
+          NODE_ENV: production
+        run: |
+          echo "Starting build..."
+          npm run build
+          echo "Build completed successfully"
       
       - name: Verify build output
         run: |
