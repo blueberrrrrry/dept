@@ -4,6 +4,7 @@ import { useRecentViewContext } from '../context/RecentViewContext'
 import { useUser } from '../context/UserContext'
 import Sidebar from '../components/Sidebar'
 import UserInfoModal from '../components/UserInfoModal'
+import { PRODUCT_IMAGE_PLACEHOLDER } from '../utils/productImageUrl'
 
 const RecentViewPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('shopping')
@@ -108,7 +109,7 @@ const RecentViewPage: React.FC = () => {
                           className="w-full h-48 object-cover"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement
-                            target.src = '/placeholder-image.jpg'
+                            target.src = PRODUCT_IMAGE_PLACEHOLDER
                           }}
                         />
                       </Link>

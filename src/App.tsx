@@ -122,7 +122,7 @@ const AppContent: React.FC = () => {
   const { toastMessage, showToast, hideToast } = useWishlistContext()
 
   return (
-    <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <ScrollToTop />
       <div className="w-full min-h-screen m-0 p-0">
         <ConditionalHeader />

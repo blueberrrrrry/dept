@@ -4,6 +4,7 @@ import Sidebar from '../components/Sidebar'
 import UserInfoModal from '../components/UserInfoModal'
 import { getUserOrders, migrateLocalOrdersToDatabase, Order, OrderItem, updateOrderStatus, cancelOrder } from '../services/orderService'
 import { useUser } from '../context/UserContext'
+import { PRODUCT_IMAGE_PLACEHOLDER } from '../utils/productImageUrl'
 
 
 const OrderTracking: React.FC = () => {
@@ -243,7 +244,7 @@ const OrderTracking: React.FC = () => {
                                                         name: '테스트 상품',
                                                         price: 50000,
                                                         quantity: 1,
-                                                        image: '/placeholder-image.jpg'
+                                                        image: PRODUCT_IMAGE_PLACEHOLDER
                                                     }
                                                 ],
                                                 shipping_address: '테스트 주소',

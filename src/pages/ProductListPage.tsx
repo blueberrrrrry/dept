@@ -3,6 +3,7 @@ import { useParams, Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { Product } from '../types'
 import { getProductsByLevel3Category, getBreadcrumbPath } from '../services/productService'
 import Breadcrumb from '../components/Breadcrumb'
+import { PRODUCT_IMAGE_PLACEHOLDER } from '../utils/productImageUrl'
 
 type SortOption = 'sales' | 'recent' | 'recommended' | 'price_low' | 'price_high' | 'reviews'
 type ViewMode = 'grid' | 'list'
@@ -275,7 +276,7 @@ const ProductListPage: React.FC = () => {
               >
                 <div className={`${viewMode === 'list' ? 'w-48 flex-shrink-0' : ''}`}>
                   <img
-                    src={product.image || '/placeholder-image.jpg'}
+                    src={product.image || PRODUCT_IMAGE_PLACEHOLDER}
                     alt={product.name}
                     className={`${viewMode === 'list' ? 'w-full h-48' : 'w-full h-48'} object-cover`}
                   />

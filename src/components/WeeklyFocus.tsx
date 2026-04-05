@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getPopularProducts } from '../services/productService'
 import { Product } from '../types'
+import {
+  weeklyFocusHeroImage,
+  weeklyFocusSideImages,
+  brandAvenueImages
+} from '../data/homePromoMedia'
 
 const WeeklyFocus: React.FC = () => {
   const navigate = useNavigate()
@@ -94,14 +99,15 @@ const WeeklyFocus: React.FC = () => {
           }`}>
           Weekly Focus
         </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[400px]">
-          <div className="lg:col-span-2 relative overflow-hidden rounded-lg shadow-lg group">
-            <video className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" autoPlay muted loop>
-              <source
-                src="https://minfo.lotteshopping.com/content/video/20250821/0825_%EC%9D%B8%EB%B2%A4%ED%86%A0%EB%A6%AC(PC).mp4"
-                type="video/mp4"
-              />
-            </video>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[400px] lg:h-[400px]">
+          <div className="lg:col-span-2 relative overflow-hidden rounded-lg shadow-lg group min-h-[240px] lg:min-h-0">
+            <img
+              src={weeklyFocusHeroImage}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-8">
               <div className="text-sm font-semibold text-white bg-white bg-opacity-20 px-3 py-1 rounded-full w-fit mb-4">FASHION</div>
               <h3 className="text-4xl font-bold text-white mb-3">LACOSTE</h3>
@@ -109,25 +115,27 @@ const WeeklyFocus: React.FC = () => {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <div className="relative flex-1 overflow-hidden rounded-lg shadow-lg group">
-              <div
-                className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                style={{
-                  backgroundImage: 'url(https://contents.lotteon.com/display/dshoplnk/52737/2/M001313/685467/P70E969733B3E8393A6EDA22EB3F84023F93CFFC3BD0E6D547877026F26C11CD4/file/dims/optimize/format/webp)'
-                }}
-              ></div>
+            <div className="relative flex-1 min-h-[160px] overflow-hidden rounded-lg shadow-lg group">
+              <img
+                src={weeklyFocusSideImages.beauty}
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
               <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6">
                 <div className="text-xs font-semibold text-white bg-white bg-opacity-20 px-2 py-1 rounded-full w-fit mb-2">BEAUTY</div>
                 <h3 className="text-xl font-bold text-white">스킨케어 루틴</h3>
               </div>
             </div>
-            <div className="relative flex-1 overflow-hidden rounded-lg shadow-lg group">
-              <div
-                className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                style={{
-                  backgroundImage: 'url(https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)'
-                }}
-              ></div>
+            <div className="relative flex-1 min-h-[160px] overflow-hidden rounded-lg shadow-lg group">
+              <img
+                src={weeklyFocusSideImages.fashion}
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
               <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6">
                 <div className="text-xs font-semibold text-white bg-white bg-opacity-20 px-2 py-1 rounded-full w-fit mb-2">FASHION</div>
                 <h3 className="text-xl font-bold text-white">가을 트렌드</h3>
@@ -143,15 +151,16 @@ const WeeklyFocus: React.FC = () => {
           }`}>
           New Brand Avenue
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-[600px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 min-h-[600px] md:h-[600px]">
           {/* 첫 번째 행 - ADIDAS */}
-          <div className="relative overflow-hidden rounded-lg shadow-lg group">
-            <div
-              className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-              style={{
-                backgroundImage: 'url(https://image.thehyundai.com/static/image/sect/dispbnnr22410015210020250818082110.jpg)'
-              }}
-            ></div>
+          <div className="relative overflow-hidden rounded-lg shadow-lg group min-h-[280px] md:min-h-0">
+            <img
+              src={brandAvenueImages.sports}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6">
               <div className="text-sm font-semibold text-white bg-white bg-opacity-20 px-3 py-1 rounded-full w-fit mb-3">SPORTS</div>
               <h3 className="text-2xl font-bold text-white mb-2">ADIDAS</h3>
@@ -168,13 +177,14 @@ const WeeklyFocus: React.FC = () => {
           </div>
 
           {/* 첫 번째 행 - MAXMARA */}
-          <div className="relative overflow-hidden rounded-lg shadow-lg group">
-            <div
-              className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-              style={{
-                backgroundImage: 'url(https://image.thehyundai.com/HM/HM001Tile/20241119/164317/dispimg22410010020241119164341.jpg)'
-              }}
-            ></div>
+          <div className="relative overflow-hidden rounded-lg shadow-lg group min-h-[280px] md:min-h-0">
+            <img
+              src={brandAvenueImages.luxury}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6">
               <div className="text-sm font-semibold text-white bg-white bg-opacity-20 px-3 py-1 rounded-full w-fit mb-3">LUXURY</div>
               <h3 className="text-2xl font-bold text-white mb-2">MAXMARA</h3>
@@ -191,13 +201,14 @@ const WeeklyFocus: React.FC = () => {
           </div>
 
           {/* 두 번째 행 - CREED */}
-          <div className="relative overflow-hidden rounded-lg shadow-lg group">
-            <div
-              className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-              style={{
-                backgroundImage: 'url(https://image.thehyundai.com/static/image/sect/dispbnnr16793811012020220307101531.jpg)'
-              }}
-            ></div>
+          <div className="relative overflow-hidden rounded-lg shadow-lg group min-h-[280px] md:min-h-0">
+            <img
+              src={brandAvenueImages.perfume}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6">
               <div className="text-sm font-semibold text-white bg-white bg-opacity-20 px-3 py-1 rounded-full w-fit mb-3">PERFUME</div>
               <h3 className="text-2xl font-bold text-white mb-2">CREED</h3>
@@ -214,13 +225,14 @@ const WeeklyFocus: React.FC = () => {
           </div>
 
           {/* 두 번째 행 - HERMÈS */}
-          <div className="relative overflow-hidden rounded-lg shadow-lg group">
-            <div
-              className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-              style={{
-                backgroundImage: 'url(https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)'
-              }}
-            ></div>
+          <div className="relative overflow-hidden rounded-lg shadow-lg group min-h-[280px] md:min-h-0">
+            <img
+              src={brandAvenueImages.fashion}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-6">
               <div className="text-sm font-semibold text-white bg-white bg-opacity-20 px-3 py-1 rounded-full w-fit mb-3">FASHION</div>
               <h3 className="text-2xl font-bold text-white mb-2">HERMÈS</h3>
@@ -279,11 +291,14 @@ const WeeklyFocus: React.FC = () => {
                   const badgeIndex = index % badgeColors.length
                   return (
                     <div key={product.id} className="group cursor-pointer" onClick={() => navigate(`/product/${product.id}`)}>
-                      <div className="relative overflow-hidden rounded-lg shadow-lg mb-4">
-                        <div
-                          className="w-full h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
-                          style={{ backgroundImage: `url(${product.image})` }}
-                        ></div>
+                      <div className="relative overflow-hidden rounded-lg shadow-lg mb-4 h-64">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
+                          decoding="async"
+                        />
                         <div className={`absolute top-4 right-4 ${badgeColors[badgeIndex]} text-white px-2 py-1 rounded-full text-xs font-semibold`}>
                           {badgeLabels[badgeIndex]}
                         </div>

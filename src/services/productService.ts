@@ -1,5 +1,6 @@
 import { supabase } from './supabase'
 import { Product, Category } from '../types'
+import { resolveProductImageUrl } from '../utils/productImageUrl'
 
 // 모든 상품 가져오기
 export const getAllProducts = async (): Promise<Product[]> => {
@@ -17,7 +18,7 @@ export const getAllProducts = async (): Promise<Product[]> => {
 
         return data?.map(product => ({
             ...product,
-            image: product.image_urls?.[0] || '/placeholder-image.jpg'
+            image: resolveProductImageUrl(product.image_urls, product.image_url)
         })) || []
     } catch (error) {
         console.error('Error in getAllProducts:', error)
@@ -42,7 +43,7 @@ export const getProductsByCategory = async (categoryId: number): Promise<Product
 
         return data?.map(product => ({
             ...product,
-            image: product.image_urls?.[0] || '/placeholder-image.jpg'
+            image: resolveProductImageUrl(product.image_urls, product.image_url)
         })) || []
     } catch (error) {
         console.error('Error in getProductsByCategory:', error)
@@ -75,7 +76,7 @@ export const getProductById = async (id: number): Promise<Product | null> => {
 
         const product = {
             ...data,
-            image: data.image_urls?.[0] || '/placeholder-image.jpg'
+            image: resolveProductImageUrl(data.image_urls, data.image_url)
         }
 
         console.log('Processed product:', product)
@@ -103,7 +104,7 @@ export const getPopularProducts = async (limit: number = 8): Promise<Product[]> 
 
         return data?.map(product => ({
             ...product,
-            image: product.image_urls?.[0] || '/placeholder-image.jpg'
+            image: resolveProductImageUrl(product.image_urls, product.image_url)
         })) || []
     } catch (error) {
         console.error('Error in getPopularProducts:', error)
@@ -128,7 +129,7 @@ export const getNewProducts = async (limit: number = 8): Promise<Product[]> => {
 
         return data?.map(product => ({
             ...product,
-            image: product.image_urls?.[0] || '/placeholder-image.jpg'
+            image: resolveProductImageUrl(product.image_urls, product.image_url)
         })) || []
     } catch (error) {
         console.error('Error in getNewProducts:', error)
@@ -276,7 +277,7 @@ export const searchProducts = async (query: string): Promise<Product[]> => {
 
         return data?.map(product => ({
             ...product,
-            image: product.image_urls?.[0] || '/placeholder-image.jpg'
+            image: resolveProductImageUrl(product.image_urls, product.image_url)
         })) || []
     } catch (error) {
         console.error('Error in searchProducts:', error)
@@ -339,7 +340,7 @@ export const advancedSearchProducts = async (
 
         return data?.map(product => ({
             ...product,
-            image: product.image_urls?.[0] || '/placeholder-image.jpg'
+            image: resolveProductImageUrl(product.image_urls, product.image_url)
         })) || []
     } catch (error) {
         console.error('Error in advancedSearchProducts:', error)
@@ -487,7 +488,7 @@ export const getDiscountedProducts = async (limit: number = 8): Promise<Product[
 
         return data?.map(product => ({
             ...product,
-            image: product.image_urls?.[0] || '/placeholder-image.jpg'
+            image: resolveProductImageUrl(product.image_urls, product.image_url)
         })) || []
     } catch (error) {
         console.error('Error in getDiscountedProducts:', error)
@@ -514,7 +515,7 @@ export const getRelatedProducts = async (productId: number, categoryId: number, 
 
         return data?.map(product => ({
             ...product,
-            image: product.image_urls?.[0] || '/placeholder-image.jpg'
+            image: resolveProductImageUrl(product.image_urls, product.image_url)
         })) || []
     } catch (error) {
         console.error('Error in getRelatedProducts:', error)
@@ -603,7 +604,7 @@ export const getProductsByLevel3Category = async (level3CategoryId: number): Pro
         return {
             products: products?.map(product => ({
                 ...product,
-                image: product.image_urls?.[0] || '/placeholder-image.jpg'
+                image: resolveProductImageUrl(product.image_urls, product.image_url)
             })) || [],
             categoryName: level3Category.name
         }

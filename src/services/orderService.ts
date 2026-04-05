@@ -1,4 +1,5 @@
 import { supabase } from './supabase'
+import { PRODUCT_IMAGE_PLACEHOLDER } from '../utils/productImageUrl'
 
 export interface OrderItem {
   product_id: number
@@ -363,7 +364,7 @@ export const createTestOrder = async (userId: string): Promise<Order | null> => 
           name: '프리미엄 울 코트',
           price: 150000,
           quantity: 1,
-          image: '/placeholder-image.jpg',
+          image: PRODUCT_IMAGE_PLACEHOLDER,
           brand: '테스트 브랜드',
           size: 'FREE',
           color: '블랙'

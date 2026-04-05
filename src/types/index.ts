@@ -5,6 +5,8 @@ export interface Product {
   price: number
   brand?: string
   image_urls?: string[]
+  /** DB에 단일 컬럼으로만 들어 있는 경우(레거시) */
+  image_url?: string | null
   image: string
   category_id: number
   status: 'forsale' | 'soldout' | 'inactive'

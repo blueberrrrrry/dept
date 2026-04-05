@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { getProductsByLevel3Category, getProductsByParentCategory, getCategoryById } from '../services/categoryService'
 import { supabase } from '../services/supabase'
 import { Product } from '../types'
+import { PRODUCT_IMAGE_PLACEHOLDER } from '../utils/productImageUrl'
 
 const CategoryPage: React.FC = () => {
     const { categoryId, category } = useParams<{ categoryId: string; category: string }>()
@@ -213,7 +214,7 @@ const CategoryPage: React.FC = () => {
                                         className="w-full h-48 object-cover"
                                         onError={(e) => {
                                             const target = e.target as HTMLImageElement
-                                            target.src = '/placeholder-image.jpg'
+                                            target.src = PRODUCT_IMAGE_PLACEHOLDER
                                         }}
                                     />
                                 </div>
